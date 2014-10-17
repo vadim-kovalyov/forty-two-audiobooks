@@ -22,14 +22,14 @@ namespace FortyTwoAudiobooks.UI.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AppResources {
+    public class Actions {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AppResources() {
+        internal Actions() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace FortyTwoAudiobooks.UI.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FortyTwoAudiobooks.UI.Resources.AppResources", typeof(AppResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FortyTwoAudiobooks.UI.Resources.Actions", typeof(Actions).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,38 @@ namespace FortyTwoAudiobooks.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FORTY TWO AUDIOBOOKS.
+        ///   Looks up a localized string similar to .
         /// </summary>
-        public static string AppTitle {
+        public static string Add {
             get {
-                return ResourceManager.GetString("AppTitle", resourceCulture);
+                return ResourceManager.GetString("Add", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to collection.
+        ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Collection {
+        public static string Open {
             get {
-                return ResourceManager.GetString("Collection", resourceCulture);
+                return ResourceManager.GetString("Open", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to recent.
+        ///   Looks up a localized string similar to .
         /// </summary>
-        public static string Recent {
+        public static string Play {
             get {
-                return ResourceManager.GetString("Recent", resourceCulture);
+                return ResourceManager.GetString("Play", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LeftToRight.
+        ///   Looks up a localized string similar to .
         /// </summary>
-        public static string ResourceFlowDirection {
+        public static string Save {
             get {
-                return ResourceManager.GetString("ResourceFlowDirection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to en-US.
-        /// </summary>
-        public static string ResourceLanguage {
-            get {
-                return ResourceManager.GetString("ResourceLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to settings.
-        /// </summary>
-        public static string Settings {
-            get {
-                return ResourceManager.GetString("Settings", resourceCulture);
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
     }

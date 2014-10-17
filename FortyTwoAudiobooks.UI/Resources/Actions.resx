@@ -117,24 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ResourceFlowDirection" xml:space="preserve">
-    <value>LeftToRight</value>
-    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  <data name="Add" xml:space="preserve">
+    <value />
   </data>
-  <data name="ResourceLanguage" xml:space="preserve">
-    <value>en-US</value>
-    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  <data name="Open" xml:space="preserve">
+    <value />
   </data>
-  <data name="AppTitle" xml:space="preserve">
-    <value>FORTY TWO AUDIOBOOKS</value>
+  <data name="Play" xml:space="preserve">
+    <value />
   </data>
-  <data name="Collection" xml:space="preserve">
-    <value>collection</value>
-  </data>
-  <data name="Recent" xml:space="preserve">
-    <value>recent</value>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>settings</value>
+  <data name="Save" xml:space="preserve">
+    <value />
   </data>
 </root>

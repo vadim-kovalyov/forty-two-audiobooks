@@ -36,10 +36,8 @@
             CurrentUICulture of the app at run time.
          -->
 
-        <!--Pivot Control-->
-        <phone:Pivot Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}">
-            <!--Pivot item one-->
-            <phone:PivotItem Header="first">
+        <phone:Pivot Title="{Binding Path=AppResources.AppTitle, Source={StaticResource LocalizedStrings}}">
+            <phone:PivotItem Header="{Binding Path=AppResources.Recent, Source={StaticResource LocalizedStrings}}">
                 <!--Double line list with text wrapping-->
                 <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}">
                     <phone:LongListSelector.ItemTemplate>
@@ -53,9 +51,7 @@
                 </phone:LongListSelector>
             </phone:PivotItem>
 
-            <!--Pivot item two-->
-            <phone:PivotItem Header="second">
-                <!--Double line list no text wrapping-->
+            <phone:PivotItem Header="{Binding Path=AppResources.Collection, Source={StaticResource LocalizedStrings}}">
                 <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}">
                     <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>

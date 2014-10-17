@@ -7,8 +7,25 @@ namespace FortyTwoAudiobooks.UI
     /// </summary>
     public class LocalizedStrings
     {
-        private static AppResources _localizedResources = new AppResources();
+        private static AppResources appResources = new AppResources();
 
-        public AppResources LocalizedResources { get { return _localizedResources; } }
+        private static Actions actions = new Actions();
+
+
+        public AppResources AppResources
+        {
+            get
+            {
+                return appResources;
+            }
+        }
+
+        public Actions Actions
+        {
+            get
+            {
+                return actions;
+            }
+        }
     }
 }
