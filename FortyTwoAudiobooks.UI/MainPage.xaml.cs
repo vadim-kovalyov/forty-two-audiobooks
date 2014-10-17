@@ -13,10 +13,8 @@ namespace FortyTwoAudiobooks.UI
         {
             InitializeComponent();
 
-            // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
 
-            // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
 

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Navigation;
+using FortyTwoAudiobooks.Core.Services;
 using FortyTwoAudiobooks.UI.App_Start;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -23,7 +24,7 @@ namespace FortyTwoAudiobooks.UI
                 // Delay creation of the view model until necessary
                 if (viewModel == null)
                 {
-                    viewModel = new MainViewModel();
+                    viewModel = new MainViewModel(new BookService());
                 }
 
                 return viewModel;
