@@ -1,4 +1,7 @@
-﻿using System.Windows.Navigation;
+﻿using System;
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 
 namespace FortyTwoAudiobooks.UI
