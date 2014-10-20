@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
+    d:DataContext="{d:DesignData SampleData/MainViewModel.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -25,11 +25,13 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <phone:Pivot Title="{Binding Path=AppResources.AppTitle, Source={StaticResource LocalizedStrings}}">
+        <phone:Pivot Title="{Binding Path=AppResources.AppTitle, Source={StaticResource LocalizedStrings}}" >
             <phone:PivotItem Header="{Binding Path=AppResources.Recent, Source={StaticResource LocalizedStrings}}">
-                <!--Double line list with text wrapping-->
-                <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Recent}"
+                <StackPanel>
+                    <!--<ProgressBar IsIndeterminate="True"/>-->
+                    <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Recent}"
                                         ItemTemplate="{StaticResource BookViewTemplate}" />
+                </StackPanel>
             </phone:PivotItem>
 
             <phone:PivotItem Header="{Binding Path=AppResources.Collection, Source={StaticResource LocalizedStrings}}">
@@ -45,5 +47,15 @@
 
         <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" IsHitTestVisible="False" />-->
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/Add.png" Text="Add"/>
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/Pause.png" Text="Play"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="feedback"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

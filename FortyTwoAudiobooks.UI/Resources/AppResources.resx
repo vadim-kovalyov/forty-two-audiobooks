@@ -137,4 +137,7 @@
   <data name="Settings" xml:space="preserve">
     <value>settings</value>
   </data>
+  <data name="AddBook" xml:space="preserve">
+    <value>add book</value>
+  </data>
 </root>

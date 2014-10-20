@@ -61,6 +61,15 @@ namespace FortyTwoAudiobooks.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to add book.
+        /// </summary>
+        public static string AddBook {
+            get {
+                return ResourceManager.GetString("AddBook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FORTY TWO AUDIOBOOKS.
         /// </summary>
         public static string AppTitle {

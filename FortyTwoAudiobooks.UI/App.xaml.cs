@@ -2,34 +2,34 @@
 using System.Windows;
 using System.Windows.Navigation;
 using FortyTwoAudiobooks.Core.Services;
+using FortyTwoAudiobooks.Core.ViewModels;
 using FortyTwoAudiobooks.UI.App_Start;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using FortyTwoAudiobooks.UI.ViewModels;
 
 namespace FortyTwoAudiobooks.UI
 {
     public partial class App
     {
-        private static MainViewModel viewModel;
+        //private static MainViewModel viewModel;
 
-        /// <summary>
-        /// A static ViewModel used by the views to bind against.
-        /// </summary>
-        /// <returns>The MainViewModel object.</returns>
-        public static MainViewModel ViewModel
-        {
-            get
-            {
-                // Delay creation of the view model until necessary
-                if (viewModel == null)
-                {
-                    viewModel = new MainViewModel(new BookService());
-                }
+        ///// <summary>
+        ///// A static ViewModel used by the views to bind against.
+        ///// </summary>
+        ///// <returns>The MainViewModel object.</returns>
+        //public static MainViewModel ViewModel
+        //{
+        //    get
+        //    {
+        //        // Delay creation of the view model until necessary
+        //        if (viewModel == null)
+        //        {
+        //            viewModel = new MainViewModel(new BookService());
+        //        }
 
-                return viewModel;
-            }
-        }
+        //        return viewModel;
+        //    }
+        //}
 
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -66,10 +66,10 @@ namespace FortyTwoAudiobooks.UI
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             // Ensure that application state is restored appropriately
-            if (!ViewModel.IsDataLoaded)
-            {
-                ViewModel.LoadData();
-            }
+            //if (!ViewModel.IsDataLoaded)
+            //{
+            //    ViewModel.LoadData();
+            //}
         }
 
         // Code to execute when the application is deactivated (sent to background)

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace FortyTwoAudiobooks.UI.ViewModels
+namespace FortyTwoAudiobooks.Core.ViewModels
 {
     public class BookViewModel : INotifyPropertyChanged
     {

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace FortyTwoAudiobooks.Core.Model
 {
-    public class Books : List<Book>
+    public class Books : ObservableCollection<Book>
     {
         
     }

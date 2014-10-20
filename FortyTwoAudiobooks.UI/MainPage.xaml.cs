@@ -1,29 +1,31 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Navigation;
+﻿using System.Windows.Navigation;
+using FortyTwoAudiobooks.Core.Services;
+using FortyTwoAudiobooks.Core.ViewModels;
 using Microsoft.Phone.Controls;
 
 namespace FortyTwoAudiobooks.UI
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        private readonly MainViewModel viewModel;
+
         // Constructor
         public MainPage()
         {
             InitializeComponent();
-
-            DataContext = App.ViewModel;
-
             //BuildLocalizedApplicationBar();
+
+            viewModel = new MainViewModel(new BookService());
         }
 
         // Load data for the ViewModel Items
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (!App.ViewModel.IsDataLoaded)
+            DataContext = viewModel;
+
+            if (!viewModel.IsLoaded)
             {
-                App.ViewModel.LoadData();
+                await viewModel.LoadAsync();
             }
         }
 
