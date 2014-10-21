@@ -3,7 +3,10 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Markup;
 using FortyTwoAudiobooks.UI.Resources;
+using GalaSoft.MvvmLight.Threading;
+using GalaSoft.MvvmLight.Views;
 using Microsoft.Phone.Shell;
+using Microsoft.Practices.ServiceLocation;
 
 namespace FortyTwoAudiobooks.UI.App_Start
 {
@@ -11,9 +14,12 @@ namespace FortyTwoAudiobooks.UI.App_Start
     {
         public static void Configure(Application app)
         {
+            DispatcherHelper.Initialize();
+
             ConfigureDebugger(app);
             ConfigureLanguage(app);
             ConfigureDependencies(app);
+            ConfigureNavigation(app);
         }
 
         private static void ConfigureLanguage(Application app)
@@ -57,6 +63,7 @@ namespace FortyTwoAudiobooks.UI.App_Start
 
         private static void ConfigureDebugger(Application app)
         {
+#if DEBUG
             // Show graphics profiling information while debugging.
             if (Debugger.IsAttached)
             {
@@ -75,12 +82,19 @@ namespace FortyTwoAudiobooks.UI.App_Start
                 // Caution:- Use this under debug mode only. Application that disables user idle detection will continue to run
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
+#endif
             }
         }
 
         private static void ConfigureDependencies(Application app)
         {
-            
+            ContainerConfig.Configure(app);
+        }
+
+        private static void ConfigureNavigation(Application app)
+        {
+            NavigationService service = (NavigationService) ServiceLocator.Current.GetInstance<INavigationService>();
+            NavigationConfig.Configure(service);
         }
     }
 }

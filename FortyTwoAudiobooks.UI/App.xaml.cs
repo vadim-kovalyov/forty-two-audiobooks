@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Navigation;
-using FortyTwoAudiobooks.Core.Services;
-using FortyTwoAudiobooks.Core.ViewModels;
 using FortyTwoAudiobooks.UI.App_Start;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -11,26 +9,6 @@ namespace FortyTwoAudiobooks.UI
 {
     public partial class App
     {
-        //private static MainViewModel viewModel;
-
-        ///// <summary>
-        ///// A static ViewModel used by the views to bind against.
-        ///// </summary>
-        ///// <returns>The MainViewModel object.</returns>
-        //public static MainViewModel ViewModel
-        //{
-        //    get
-        //    {
-        //        // Delay creation of the view model until necessary
-        //        if (viewModel == null)
-        //        {
-        //            viewModel = new MainViewModel(new BookService());
-        //        }
-
-        //        return viewModel;
-        //    }
-        //}
-
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -65,11 +43,6 @@ namespace FortyTwoAudiobooks.UI
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            // Ensure that application state is restored appropriately
-            //if (!ViewModel.IsDataLoaded)
-            //{
-            //    ViewModel.LoadData();
-            //}
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -87,18 +60,22 @@ namespace FortyTwoAudiobooks.UI
 
         private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
+#if DEBUG
             if (Debugger.IsAttached)
             {
                 Debugger.Break();
             }
+#endif
         }
 
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)
         {
+#if DEBUG
             if (Debugger.IsAttached)
             {
                 Debugger.Break();
             }
+#endif
         }
 
         #region Phone application initialization
@@ -110,7 +87,9 @@ namespace FortyTwoAudiobooks.UI
         private void InitializePhoneApplication()
         {
             if (phoneApplicationInitialized)
+            {
                 return;
+            }
 
             // Create the frame but don't set it as RootVisual yet; this allows the splash
             // screen to remain active until the application is ready to render.

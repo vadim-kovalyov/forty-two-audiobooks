@@ -1,33 +1,42 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Dynamic;
 using System.Threading.Tasks;
+using FortyTwoAudiobooks.Core.Extensions;
 using FortyTwoAudiobooks.Core.Model;
 using FortyTwoAudiobooks.Core.Services;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 
 namespace FortyTwoAudiobooks.Core.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
         private readonly IBookService bookService;
+        private readonly INavigationService navigationService;
+        private readonly IDialogService dialogService;
+        private readonly Action<Action> dispatcherDelegate;
 
-        public ObservableCollection<Book> Recent { get; private set; }
+        private ObservableCollection<Book> recent;
 
-        public ObservableCollection<Book> Collection { get; private set; }
-
-        public MainViewModel()
-            : this(new BookService())
+        public ObservableCollection<Book> Recent
         {
-
+            get { return recent; }
+            set
+            {
+                Set(() => Recent, ref recent, value);
+            }
         }
 
-        public MainViewModel(IBookService bookService)
+        private ObservableCollection<Book> collection;
+
+        public ObservableCollection<Book> Collection
         {
-            this.bookService = bookService;
-            Recent = new ObservableCollection<Book>();
-            Collection = new ObservableCollection<Book>();
+            get { return collection; }
+            set
+            {
+                Set(() => Collection, ref collection, value);
+            }
         }
 
         private bool isLoaded;
@@ -37,8 +46,44 @@ namespace FortyTwoAudiobooks.Core.ViewModels
             get { return isLoaded; }
             set
             {
-                this.Set(() => IsLoaded, ref isLoaded, value);
+                Set(() => IsLoaded, ref isLoaded, value);
             }
+        }
+
+        private bool isCollectionEmpty;
+
+        public bool IsCollectionEmpty
+        {
+            get { return isCollectionEmpty; }
+            set
+            {
+                Set(() => IsCollectionEmpty, ref isCollectionEmpty, value);
+            }
+        }
+
+        public RelayCommand AddBookCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    //await dialogService.ShowMessage("We are Adding book", "Add Book");
+                    navigationService.NavigateToAddBook();
+                });
+            }
+        }
+
+        public MainViewModel(IBookService bookService,
+            INavigationService navigationService,
+            IDialogService dialogService,
+            Action<Action> dispatcherDelegate)
+        {
+            this.bookService = bookService;
+            this.navigationService = navigationService;
+            this.dialogService = dialogService;
+            this.dispatcherDelegate = dispatcherDelegate;
+            Recent = new ObservableCollection<Book>();
+            Collection = new ObservableCollection<Book>();
         }
 
         /// <summary>
@@ -46,19 +91,17 @@ namespace FortyTwoAudiobooks.Core.ViewModels
         /// </summary>
         public async Task LoadAsync()
         {
-            await Task.Delay(4000);
-
             var recentTask = bookService.GetRecentBooksAsync();
             var collectionTask = bookService.GetAllBooksAsync();
 
             await Task.WhenAll(recentTask, collectionTask)
-                .ContinueWith(t =>
+                .ContinueWith(t => dispatcherDelegate.Invoke(() =>
                 {
+                    Collection = collectionTask.Result;
+                    Recent = recentTask.Result;
                     IsLoaded = true;
-                });
-
-            Recent = await recentTask;
-            Collection = await collectionTask;
+                    IsCollectionEmpty = Collection.Count == 0;
+                }));
         }
     }
 }

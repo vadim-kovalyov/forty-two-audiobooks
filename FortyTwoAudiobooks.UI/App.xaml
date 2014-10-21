@@ -2,13 +2,19 @@
     x:Class="FortyTwoAudiobooks.UI.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone">
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:converters="clr-namespace:FortyTwoAudiobooks.UI.Converters"
+    xmlns:viewModels="clr-namespace:FortyTwoAudiobooks.UI.ViewModels">
 
     <!--Application Resources-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:FortyTwoAudiobooks.UI" x:Key="LocalizedStrings"/>
+        <converters:BooleanToVisibilityConverter x:Key="VisibilityConverter" />
+        <converters:InvertBooleanToVisibilityConverter x:Key="InvertVisibilityConverter" />
+        <viewModels:ViewModelLocator x:Key="ViewModelLocator" />
     </Application.Resources>
+
+
 
     <Application.ApplicationLifetimeObjects>
         <!--Required object that handles lifetime events for the application-->

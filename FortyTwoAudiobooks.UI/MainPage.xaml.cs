@@ -1,32 +1,43 @@
-﻿using System.Windows.Navigation;
-using FortyTwoAudiobooks.Core.Services;
+﻿using System;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 using FortyTwoAudiobooks.Core.ViewModels;
-using Microsoft.Phone.Controls;
 
 namespace FortyTwoAudiobooks.UI
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class MainPage
     {
-        private readonly MainViewModel viewModel;
-
         // Constructor
         public MainPage()
         {
             InitializeComponent();
             //BuildLocalizedApplicationBar();
-
-            viewModel = new MainViewModel(new BookService());
         }
 
         // Load data for the ViewModel Items
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            DataContext = viewModel;
+            MainViewModel viewModel = (MainViewModel)DataContext;
 
             if (!viewModel.IsLoaded)
             {
                 await viewModel.LoadAsync();
             }
+
+            if (viewModel.IsCollectionEmpty)
+            {
+                MainPivot.Items.Remove(Recent);
+            }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            base.OnNavigatingFrom(e);
         }
 
         // Sample code for building a localized ApplicationBar
@@ -44,5 +55,11 @@ namespace FortyTwoAudiobooks.UI
         //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
         //    ApplicationBar.MenuItems.Add(appBarMenuItem);
         //}
+
+        protected void Add_OnClick(object sender, EventArgs e)
+        {
+            MainViewModel viewModel = (MainViewModel)DataContext;
+            viewModel.AddBookCommand.Execute(null);
+        }
     }
 }
