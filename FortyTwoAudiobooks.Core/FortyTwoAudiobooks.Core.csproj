@@ -57,6 +57,9 @@
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\Design\DesignBookService.cs" />
     <Compile Include="Services\IBookService.cs" />
+    <Compile Include="Services\ISourceService.cs" />
+    <Compile Include="Services\SourceService.cs" />
+    <Compile Include="ViewModels\AddBookViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>

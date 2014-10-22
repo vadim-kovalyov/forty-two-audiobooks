@@ -1,0 +1,12 @@
+﻿<viewModels:AddBookViewModel
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:FortyTwoAudiobooks.Core.Model;assembly=FortyTwoAudiobooks.Core"
+    xmlns:viewModels="clr-namespace:FortyTwoAudiobooks.Core.ViewModels;assembly=FortyTwoAudiobooks.Core">
+
+    <viewModels:AddBookViewModel.AvailableSources>
+        <core:Source Name="Media Library" Description="this phone" />
+        <core:Source Name="Dropbox" Description="vadim.kovalyov@gmail.com" />
+    </viewModels:AddBookViewModel.AvailableSources>
+
+</viewModels:AddBookViewModel>

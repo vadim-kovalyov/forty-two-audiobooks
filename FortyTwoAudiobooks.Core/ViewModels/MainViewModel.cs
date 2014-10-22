@@ -67,7 +67,6 @@ namespace FortyTwoAudiobooks.Core.ViewModels
             {
                 return new RelayCommand(() =>
                 {
-                    //await dialogService.ShowMessage("We are Adding book", "Add Book");
                     navigationService.NavigateToAddBook();
                 });
             }
@@ -82,8 +81,8 @@ namespace FortyTwoAudiobooks.Core.ViewModels
             this.navigationService = navigationService;
             this.dialogService = dialogService;
             this.dispatcherDelegate = dispatcherDelegate;
-            Recent = new ObservableCollection<Book>();
-            Collection = new ObservableCollection<Book>();
+            recent = new ObservableCollection<Book>();
+            collection = new ObservableCollection<Book>();
         }
 
         /// <summary>
@@ -94,14 +93,12 @@ namespace FortyTwoAudiobooks.Core.ViewModels
             var recentTask = bookService.GetRecentBooksAsync();
             var collectionTask = bookService.GetAllBooksAsync();
 
-            await Task.WhenAll(recentTask, collectionTask)
-                .ContinueWith(t => dispatcherDelegate.Invoke(() =>
-                {
-                    Collection = collectionTask.Result;
-                    Recent = recentTask.Result;
-                    IsLoaded = true;
-                    IsCollectionEmpty = Collection.Count == 0;
-                }));
+            await Task.WhenAll(recentTask, collectionTask);
+
+            IsLoaded = true;
+            Collection = await collectionTask;
+            Recent = await recentTask;
+            IsCollectionEmpty = Collection.Count == 0;
         }
     }
 }

@@ -31,5 +31,13 @@ namespace FortyTwoAudiobooks.UI.ViewModels
                 return SimpleIoc.Default.GetInstance<MainViewModel>();
             }
         }
+
+        public AddBookViewModel AddBookViewModel
+        {
+            get
+            {
+                return SimpleIoc.Default.GetInstance<AddBookViewModel>();
+            }
+        }
     }
 }

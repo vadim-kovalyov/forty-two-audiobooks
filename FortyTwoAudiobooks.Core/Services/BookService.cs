@@ -18,6 +18,20 @@ namespace FortyTwoAudiobooks.Core.Services
             books.Add(new Book() { Source = "runtime five", Title = "Maecenas praesent accumsan bibendum" });
             books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
             books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { Source = "runtime aloot", Title = "Dictumst eleifend facilisi faucibus" });
         }
 
         public async Task<Books> GetRecentBooksAsync()
@@ -26,7 +40,7 @@ namespace FortyTwoAudiobooks.Core.Services
             result.Add(books.FirstOrDefault());
             result.Add(books.LastOrDefault());
 
-            await Task.Delay(1000);
+            await Task.Delay(3000);
 
             return await Task.FromResult(result);
         }

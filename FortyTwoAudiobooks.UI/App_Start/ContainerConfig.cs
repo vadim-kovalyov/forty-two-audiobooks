@@ -16,8 +16,13 @@ namespace FortyTwoAudiobooks.UI.App_Start
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
+            // Services
             SimpleIoc.Default.Register<IBookService, BookService>();
+            SimpleIoc.Default.Register<ISourceService, SourceService>();
+
+            // View Models
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<AddBookViewModel>();
 
             // MVVM Light components
             SimpleIoc.Default.Register<INavigationService, NavigationService>();
