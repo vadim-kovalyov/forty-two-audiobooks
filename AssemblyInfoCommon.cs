@@ -4,7 +4,7 @@ using System.Resources;
 
 // Common assembly information.
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FortyTwoAudiobooks")]
+[assembly: AssemblyProduct("FortyTwo Audiobooks")]
 [assembly: AssemblyCopyright("Copyright © Vadim Kovalyov 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -4,7 +4,7 @@
   <Languages xmlns="">
     <Language code="ru-RU" />
   </Languages>
-  <App xmlns="" ProductID="{981f0adc-5563-473f-91ce-0c406e6efb0e}" Title="FortyTwo Audiobooks" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Vadim Kovalyov" Description="FortyTwo Audiobooks is the answer to the Ultimate Question of Audiobook App. All what you always wanted." Publisher="Vadim Kovalyov" PublisherID="{5801713b-0799-4e92-be0a-45ac913a2a4d}">
+  <App xmlns="" ProductID="{981f0adc-5563-473f-91ce-0c406e6efb0e}" Title="1-FortyTwo Audiobooks" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Vadim Kovalyov" Description="FortyTwo Audiobooks is the answer to the Ultimate Question of Audiobook App. All what you always wanted." Publisher="Vadim Kovalyov" PublisherID="{5801713b-0799-4e92-be0a-45ac913a2a4d}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />

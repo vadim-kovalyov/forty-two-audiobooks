@@ -33,3 +33,5 @@ vendor
 *dotCover*
 AnybillWeb.sln.DotSettings.user
 *.Publish.xml
+TestResults
+*sln.DotSettings.user

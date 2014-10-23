@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,8 @@ namespace FortyTwoAudiobooks.Core.Services
 {
     public interface IBookService
     {
-        Task<Books> GetRecentBooksAsync();
+        Task<ObservableCollection<Book>> GetRecentBooksAsync();
 
-        Task<Books> GetAllBooksAsync();
+        Task<ObservableCollection<Book>> GetAllBooksAsync();
     }
 }

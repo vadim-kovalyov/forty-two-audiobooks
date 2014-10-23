@@ -15,7 +15,6 @@ namespace FortyTwoAudiobooks.Core.ViewModels
         private readonly IBookService bookService;
         private readonly INavigationService navigationService;
         private readonly IDialogService dialogService;
-        private readonly Action<Action> dispatcherDelegate;
 
         private ObservableCollection<Book> recent;
 
@@ -74,13 +73,11 @@ namespace FortyTwoAudiobooks.Core.ViewModels
 
         public MainViewModel(IBookService bookService,
             INavigationService navigationService,
-            IDialogService dialogService,
-            Action<Action> dispatcherDelegate)
+            IDialogService dialogService)
         {
             this.bookService = bookService;
             this.navigationService = navigationService;
             this.dialogService = dialogService;
-            this.dispatcherDelegate = dispatcherDelegate;
             recent = new ObservableCollection<Book>();
             collection = new ObservableCollection<Book>();
         }
