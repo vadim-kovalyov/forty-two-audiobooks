@@ -1,14 +1,16 @@
 ﻿using System;
 
-namespace FortyTwoAudiobooks.Core.Model
+namespace FortyTwoAudiobooks.Model
 {
     public class Track
     {
+        public Guid? TrackId { get; set; }
+
         public String Title { get; set; }
 
         public TimeSpan Length { get; set; }
 
-        public Source Source { get; set; }
+        public Guid? AccountId { get; set; }
 
         public string Uri { get; set; }
     }

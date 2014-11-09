@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 using FortyTwoAudiobooks.Core.ViewModels;
 
@@ -24,10 +23,10 @@ namespace FortyTwoAudiobooks.UI
                 await viewModel.LoadAsync();
             }
 
-            if (viewModel.IsCollectionEmpty)
-            {
-                MainPivot.Items.Remove(Recent);
-            }
+            //if (viewModel.IsCollectionEmpty)
+            //{
+            //    MainPivot.Items.Remove(Recent);
+            //}
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)

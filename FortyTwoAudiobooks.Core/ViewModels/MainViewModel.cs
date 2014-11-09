@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using FortyTwoAudiobooks.Core.Extensions;
-using FortyTwoAudiobooks.Core.Model;
 using FortyTwoAudiobooks.Core.Services;
+using FortyTwoAudiobooks.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
@@ -87,14 +86,9 @@ namespace FortyTwoAudiobooks.Core.ViewModels
         /// </summary>
         public async Task LoadAsync()
         {
-            var recentTask = bookService.GetRecentBooksAsync();
-            var collectionTask = bookService.GetAllBooksAsync();
-
-            await Task.WhenAll(recentTask, collectionTask);
-
+            Collection = await bookService.GetAllBooksAsync();
+            Recent = await bookService.GetRecentBooksAsync();;
             IsLoaded = true;
-            Collection = await collectionTask;
-            Recent = await recentTask;
             IsCollectionEmpty = Collection.Count == 0;
         }
     }

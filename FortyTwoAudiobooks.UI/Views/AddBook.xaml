@@ -40,7 +40,8 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel>
                 <phone:LongListSelector ItemTemplate="{StaticResource SourceViewTemplate}" 
-                                    ItemsSource="{Binding AvailableSources}"/>
+                        ItemsSource="{Binding AvailableSources}" 
+                        SelectionChanged="Accounts_OnSelectionChanged"/>
                 <HyperlinkButton Content="Add More" FontSize="30"/>
             </StackPanel>
 

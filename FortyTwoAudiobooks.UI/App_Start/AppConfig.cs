@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Markup;
+using FortyTwoAudiobooks.Core.Config;
 using FortyTwoAudiobooks.UI.Resources;
 using GalaSoft.MvvmLight.Threading;
 using GalaSoft.MvvmLight.Views;
@@ -18,8 +19,12 @@ namespace FortyTwoAudiobooks.UI.App_Start
 
             ConfigureDebugger(app);
             ConfigureLanguage(app);
-            ConfigureDependencies(app);
+            ConfigureContainer(app);
             ConfigureNavigation(app);
+
+#if DEBUG
+            Seeds.Configure();
+#endif
         }
 
         private static void ConfigureLanguage(Application app)
@@ -86,14 +91,14 @@ namespace FortyTwoAudiobooks.UI.App_Start
             }
         }
 
-        private static void ConfigureDependencies(Application app)
+        private static void ConfigureContainer(Application app)
         {
             ContainerConfig.Configure(app);
         }
 
         private static void ConfigureNavigation(Application app)
         {
-            NavigationService service = (NavigationService) ServiceLocator.Current.GetInstance<INavigationService>();
+            NavigationService service = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             NavigationConfig.Configure(service);
         }
     }

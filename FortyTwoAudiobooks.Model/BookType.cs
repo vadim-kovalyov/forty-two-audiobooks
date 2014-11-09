@@ -1,4 +1,4 @@
-﻿namespace FortyTwoAudiobooks.Core.Model
+﻿namespace FortyTwoAudiobooks.Model
 {
     public enum BookType   
     {

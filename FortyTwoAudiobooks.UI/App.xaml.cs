@@ -78,7 +78,6 @@ namespace FortyTwoAudiobooks.UI
 #endif
         }
 
-        #region Phone application initialization
 
         // Avoid double-initialization
         private bool phoneApplicationInitialized;
@@ -146,7 +145,5 @@ namespace FortyTwoAudiobooks.UI
                 ; // do nothing
             }
         }
-
-        #endregion
     }
 }

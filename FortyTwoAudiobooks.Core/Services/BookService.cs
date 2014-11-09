@@ -1,54 +1,61 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using FortyTwoAudiobooks.Core.Model;
+using FortyTwoAudiobooks.DataAccess;
+using FortyTwoAudiobooks.Model;
 
 namespace FortyTwoAudiobooks.Core.Services
 {
     public class BookService : IBookService
     {
-        private readonly ObservableCollection<Book> books;
+        private readonly IBookRepository bookRepository;
 
-        public BookService()
+        private readonly ISettingsService settings;
+
+        private ObservableCollection<Book> Books { get; set; }
+
+        public BookService(IBookRepository bookRepository, ISettingsService settings)
         {
-            books = new ObservableCollection<Book>();
-            books.Add(new Book() { Source = "runtime one", Title = "Maecenas praesent accumsan bibendum" });
-            books.Add(new Book() { Source = "runtime two", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime three", Title = "Habitant inceptos interdum lobortis" });
-            books.Add(new Book() { Source = "runtime four", Title = "Nascetur pharetra placerat pulvinar" });
-            books.Add(new Book() { Source = "runtime five", Title = "Maecenas praesent accumsan bibendum" });
-            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            books.Add(new Book() { Source = "runtime aloot", Title = "Dictumst eleifend facilisi faucibus" });
+            this.bookRepository = bookRepository;
+            this.settings = settings;
+
         }
 
         public async Task<ObservableCollection<Book>> GetRecentBooksAsync()
         {
-            var result = new ObservableCollection<Book>();
-            result.Add(books.FirstOrDefault());
-            result.Add(books.LastOrDefault());
+            if (Books == null)
+            {
+                Books = await LoadBooksInternal();
+            }
 
-            await Task.Delay(1000);
+            IEnumerable<Book> recent = Books
+                    .Where(b => b.LastPlayed != null)
+                    .OrderBy(b => b.LastPlayed)
+                    .Take(settings.RecentBooksCount);
 
-            return await Task.FromResult(result);
+            return new ObservableCollection<Book>(recent);
         }
 
-        public Task<ObservableCollection<Book>> GetAllBooksAsync()
+        public async Task<ObservableCollection<Book>> GetAllBooksAsync()
         {
-            return Task.FromResult(books);
+            if (Books == null)
+            {
+                Books = await LoadBooksInternal();
+            }
+            return Books;
+        }
+
+        public void CreateBook(Book book, bool availableOffline)
+        {
+            Books.Add(book);
+        }
+
+        private async Task<ObservableCollection<Book>> LoadBooksInternal()
+        {
+            IEnumerable<Book> books = await bookRepository.LoadBooksAsync();
+            return new ObservableCollection<Book>(books);
         }
     }
 }

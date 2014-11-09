@@ -1,18 +1,25 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using FortyTwoAudiobooks.Core.Model;
+using FortyTwoAudiobooks.Core.Extensions;
 using FortyTwoAudiobooks.Core.Services;
+using FortyTwoAudiobooks.Model;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 
 namespace FortyTwoAudiobooks.Core.ViewModels
 {
     public class AddBookViewModel : ViewModelBase
     {
-        private readonly ISourceService sourceService;
+        private readonly AccountService accountService;
 
-        public AddBookViewModel(ISourceService sourceService)
+        private readonly INavigationService navigationService;
+
+        public AddBookViewModel(AccountService accountService,
+            INavigationService navigationService)
         {
-            this.sourceService = sourceService;
+            this.accountService = accountService;
+            this.navigationService = navigationService;
             availableSources = new ObservableCollection<Source>();
         }
 
@@ -38,9 +45,20 @@ namespace FortyTwoAudiobooks.Core.ViewModels
             }
         }
 
+        public RelayCommand SelectAccount
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    navigationService.NavigateToMediaStorage();
+                });
+            }
+        }
+
         public async Task LoadAsync()
         {
-            AvailableSources = await sourceService.GetAvailableSources();
+            AvailableSources = await accountService.GetAvailableSources();
             isLoaded = true;
         }
     }

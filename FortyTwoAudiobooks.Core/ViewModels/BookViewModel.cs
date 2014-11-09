@@ -36,7 +36,7 @@ namespace FortyTwoAudiobooks.Core.ViewModels
                 if (value != source)
                 {
                     source = value;
-                    NotifyPropertyChanged("Source");
+                    NotifyPropertyChanged("AccountName");
                 }
             }
         }

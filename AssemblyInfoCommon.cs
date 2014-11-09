@@ -1,8 +1,8 @@
-﻿using System.Reflection;
+﻿// Common assembly information.
+
+using System.Reflection;
 using System.Resources;
 
-
-// Common assembly information.
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FortyTwo Audiobooks")]
 [assembly: AssemblyCopyright("Copyright © Vadim Kovalyov 2014")]

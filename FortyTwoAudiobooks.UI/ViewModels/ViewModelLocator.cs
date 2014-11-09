@@ -1,21 +1,12 @@
 ﻿using System.Windows;
 using FortyTwoAudiobooks.Core.ViewModels;
-using FortyTwoAudiobooks.UI.App_Start;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Ioc;
+using FortyTwoAudiobooks.Core.ViewModels.Storage;
+using Microsoft.Practices.ServiceLocation;
 
 namespace FortyTwoAudiobooks.UI.ViewModels
 {
     public class ViewModelLocator
     {
-        public ViewModelLocator()
-        {
-            if (ViewModelBase.IsInDesignModeStatic)
-            {
-                ContainerConfig.ConfigureDesigner();
-            }
-        }
-
         public static ViewModelLocator Instance
         {
             get
@@ -28,7 +19,7 @@ namespace FortyTwoAudiobooks.UI.ViewModels
         {
             get
             {
-                return SimpleIoc.Default.GetInstance<MainViewModel>();
+                return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
 
@@ -36,7 +27,15 @@ namespace FortyTwoAudiobooks.UI.ViewModels
         {
             get
             {
-                return SimpleIoc.Default.GetInstance<AddBookViewModel>();
+                return ServiceLocator.Current.GetInstance<AddBookViewModel>();
+            }
+        }
+
+        public MediaStorageViewModel MediaStorageViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MediaStorageViewModel>();
             }
         }
     }

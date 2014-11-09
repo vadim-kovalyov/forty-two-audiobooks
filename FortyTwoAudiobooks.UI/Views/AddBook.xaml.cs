@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Navigation;
-using Windows.Storage;
 using FortyTwoAudiobooks.Core.ViewModels;
 using Microsoft.Phone.Controls;
-using Microsoft.Xna.Framework.Media;
 
 namespace FortyTwoAudiobooks.UI.Views
 {
-    public partial class AddBook : PhoneApplicationPage
+    public partial class AddBook
     {
         public AddBook()
         {
@@ -27,13 +24,26 @@ namespace FortyTwoAudiobooks.UI.Views
             }
 
             //MediaLibrary library = new MediaLibrary();
-            //var songs = library.Songs.ToList();
+            //var songs = library.Tracks.ToList();
 
 
             //String name = KnownFolders.MusicLibrary.DisplayName;
             //IReadOnlyList<StorageFolder> result = await Windows.Storage.KnownFolders.MusicLibrary.GetFoldersAsync();
             //var list = result.ToList();
 
+        }
+
+        private void Accounts_OnSelectionChanged(Object sender, SelectionChangedEventArgs e)
+        {
+            LongListSelector list = (LongListSelector)sender;
+
+            if (list.SelectedItem != null)
+            {
+                AddBookViewModel model = (AddBookViewModel) DataContext;
+                model.SelectAccount.Execute(null);
+
+                list.SelectedItem = null;
+            }
         }
     }
 }

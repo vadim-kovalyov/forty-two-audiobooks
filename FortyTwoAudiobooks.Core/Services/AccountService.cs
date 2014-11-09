@@ -1,10 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using FortyTwoAudiobooks.Core.Model;
+using FortyTwoAudiobooks.Model;
 
 namespace FortyTwoAudiobooks.Core.Services
 {
-    public class SourceService : ISourceService
+    public class AccountService
     {
         public Task<ObservableCollection<Source>> GetAvailableSources()
         {

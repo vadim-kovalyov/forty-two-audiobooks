@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using FizzWare.NBuilder;
-using FortyTwoAudiobooks.Core.Model;
 using FortyTwoAudiobooks.Core.Services;
 using FortyTwoAudiobooks.Core.Tests.Extensions;
 using FortyTwoAudiobooks.Core.ViewModels;
+using FortyTwoAudiobooks.Model;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

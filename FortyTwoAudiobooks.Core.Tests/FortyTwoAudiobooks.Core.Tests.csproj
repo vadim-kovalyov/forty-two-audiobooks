@@ -74,20 +74,32 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Extensions\NBuilderExtensions.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Model\MediaItemTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BookServiceTests.cs" />
+    <Compile Include="ViewModels\MediaStorageViewModelTests.cs" />
     <Compile Include="ViewModels\MainViewModelTests.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FortyTwoAudiobooks.Connectors\FortyTwoAudiobooks.Connectors.csproj">
+      <Project>{5a726d48-3cc8-4dc1-9100-c0ad0519e6b2}</Project>
+      <Name>FortyTwoAudiobooks.Connectors</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FortyTwoAudiobooks.Core\FortyTwoAudiobooks.Core.csproj">
       <Project>{cb1444eb-11b5-4570-ab07-a4741807deb5}</Project>
       <Name>FortyTwoAudiobooks.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FortyTwoAudiobooks.DataAccess\FortyTwoAudiobooks.DataAccess.csproj">
+      <Project>{60080706-bf7f-4241-bc77-16db11cad93b}</Project>
+      <Name>FortyTwoAudiobooks.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FortyTwoAudiobooks.Model\FortyTwoAudiobooks.Model.csproj">
+      <Project>{6f7ed396-9e30-4017-a24c-aea90dcc4322}</Project>
+      <Name>FortyTwoAudiobooks.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
