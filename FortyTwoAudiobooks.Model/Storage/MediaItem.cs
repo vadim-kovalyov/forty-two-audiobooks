@@ -16,6 +16,6 @@ namespace FortyTwoAudiobooks.Model.Storage
             }
         }
 
-        public bool Selected { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

@@ -64,7 +64,7 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Assets/Icons/Add.png" Text="Add" Click="Add_OnClick" />
-            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/Pause.png" Text="Play" />
+            <!--<shell:ApplicationBarIconButton IconUri="/Assets/Icons/Pause.png" Text="Pause" />-->
             <!--<shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="feedback"/>
             </shell:ApplicationBar.MenuItems>-->

@@ -5,8 +5,8 @@
     xmlns:model="clr-namespace:FortyTwoAudiobooks.Model;assembly=FortyTwoAudiobooks.Model">
 
     <viewModels:AddBookViewModel.AvailableSources>
-        <model:Source Name="Media Library" Description="this phone" />
-        <model:Source Name="Dropbox" Description="vadim.kovalyov@gmail.com" />
+        <model:StorageAccount Name="Media Library" Description="this phone" />
+        <model:StorageAccount Name="Dropbox" Description="vadim.kovalyov@gmail.com" />
     </viewModels:AddBookViewModel.AvailableSources>
 
 </viewModels:AddBookViewModel>

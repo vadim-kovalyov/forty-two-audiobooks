@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using FortyTwoAudiobooks.Model.Storage;
@@ -9,9 +8,9 @@ namespace FortyTwoAudiobooks.Connectors
 {
     public class LocalStorageConnector
     {
-        public async Task<ObservableCollection<MediaItem>> GetSongs()
+        public Task<List<MediaItem>> GetSongs()
         {
-            Task<ObservableCollection<MediaItem>> task = Task.Run(() =>
+            Task<List<MediaItem>> task = Task.Run(() =>
             {
                 IEnumerable<MediaItem> songs;
                 using (MediaLibrary library = new MediaLibrary())
@@ -22,16 +21,16 @@ namespace FortyTwoAudiobooks.Connectors
                         Artist = s.Artist.Name
                     });
                 }
-                return new ObservableCollection<MediaItem>(songs);
 
+                return new List<MediaItem>(songs);
             });
 
-            return await task;
+            return task;
         }
 
-        public async Task<ObservableCollection<MediaItem>> GetArtists()
+        public Task<List<MediaItem>> GetArtists()
         {
-            Task<ObservableCollection<MediaItem>> task = Task.Run(() =>
+            Task<List<MediaItem>> task = Task.Run(() =>
             {
                 IEnumerable<MediaItem> result;
                 using (MediaLibrary library = new MediaLibrary())
@@ -41,16 +40,16 @@ namespace FortyTwoAudiobooks.Connectors
                         Name = s.Name
                     });
                 }
-                return new ObservableCollection<MediaItem>(result);
 
+                return new List<MediaItem>(result);
             });
 
-            return await task;
+            return task;
         }
 
-        public async Task<ObservableCollection<MediaItem>> GetPlaylists()
+        public Task<List<MediaItem>> GetPlaylists()
         {
-            Task<ObservableCollection<MediaItem>> task = Task.Run(() =>
+            Task<List<MediaItem>> task = Task.Run(() =>
             {
                 IEnumerable<MediaItem> result;
                 using (MediaLibrary library = new MediaLibrary())
@@ -60,16 +59,16 @@ namespace FortyTwoAudiobooks.Connectors
                         Name = s.Name
                     });
                 }
-                return new ObservableCollection<MediaItem>(result);
 
+                return new List<MediaItem>(result);
             });
 
-            return await task;
+            return task;
         }
 
-        public async Task<ObservableCollection<MediaItem>> GetAlbums()
+        public Task<List<MediaItem>> GetAlbums()
         {
-            Task<ObservableCollection<MediaItem>> task = Task.Run(() =>
+            Task<List<MediaItem>> task = Task.Run(() =>
             {
                 IEnumerable<MediaItem> result;
                 using (MediaLibrary library = new MediaLibrary())
@@ -79,11 +78,11 @@ namespace FortyTwoAudiobooks.Connectors
                         Name = s.Name
                     });
                 }
-                return new ObservableCollection<MediaItem>(result);
 
+                return new List<MediaItem>(result);
             });
 
-            return await task;
+            return task;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace FortyTwoAudiobooks.Core.Tests.ViewModels
             MediaStorageViewModel model = new MediaStorageViewModel(localStorageConnectorMock.Object);
 
             // act
-            await model.LoadAsync();
+            await model.LoadSongs();
 
             Assert.IsTrue(model.IsLoaded);
         }

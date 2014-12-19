@@ -11,21 +11,21 @@ namespace FortyTwoAudiobooks.Core.ViewModels
 {
     public class AddBookViewModel : ViewModelBase
     {
-        private readonly AccountService accountService;
+        private readonly StorageAccountService storageAccountService;
 
         private readonly INavigationService navigationService;
 
-        public AddBookViewModel(AccountService accountService,
+        public AddBookViewModel(StorageAccountService storageAccountService,
             INavigationService navigationService)
         {
-            this.accountService = accountService;
+            this.storageAccountService = storageAccountService;
             this.navigationService = navigationService;
-            availableSources = new ObservableCollection<Source>();
+            availableSources = new ObservableCollection<StorageAccount>();
         }
 
-        private ObservableCollection<Source> availableSources;
+        private ObservableCollection<StorageAccount> availableSources;
 
-        public ObservableCollection<Source> AvailableSources
+        public ObservableCollection<StorageAccount> AvailableSources
         {
             get { return availableSources; }
             set
@@ -51,14 +51,14 @@ namespace FortyTwoAudiobooks.Core.ViewModels
             {
                 return new RelayCommand(() =>
                 {
-                    navigationService.NavigateToMediaStorage();
+                    navigationService.NavigateTo(NavigationExtensions.MediaStorage);
                 });
             }
         }
 
         public async Task LoadAsync()
         {
-            AvailableSources = await accountService.GetAvailableSources();
+            AvailableSources = await storageAccountService.GetAvailableStorageAccounts();
             isLoaded = true;
         }
     }

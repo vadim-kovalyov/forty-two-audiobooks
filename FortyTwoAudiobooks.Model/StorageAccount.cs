@@ -2,15 +2,7 @@
 
 namespace FortyTwoAudiobooks.Model
 {
-    public enum SourceEnum
-    {
-        LocalStorage = 0,
-        MediaLibrary = 1,
-        OneDrive = 2,
-        Dropbox = 3,
-    }
-
-    public class Source
+    public class StorageAccount
     {
         public static readonly String LocalStorage = "Local Storage";
 

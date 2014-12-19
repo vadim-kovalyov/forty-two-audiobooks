@@ -1,8 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using FortyTwoAudiobooks.Connectors;
 using FortyTwoAudiobooks.Model.Storage;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 namespace FortyTwoAudiobooks.Core.ViewModels.Storage
 {
@@ -10,9 +13,9 @@ namespace FortyTwoAudiobooks.Core.ViewModels.Storage
     {
         private readonly LocalStorageConnector storageConnector;
 
-        private ObservableCollection<MediaItem> tracks;
+        private ObservableCollection<MediaItemViewModel> tracks;
 
-        public ObservableCollection<MediaItem> Tracks
+        public ObservableCollection<MediaItemViewModel> Tracks
         {
             get { return tracks; }
             set
@@ -21,9 +24,9 @@ namespace FortyTwoAudiobooks.Core.ViewModels.Storage
             }
         }
 
-        private ObservableCollection<MediaItem> albums;
+        private ObservableCollection<MediaItemViewModel> albums;
 
-        public ObservableCollection<MediaItem> Albums
+        public ObservableCollection<MediaItemViewModel> Albums
         {
             get { return albums; }
             set
@@ -32,9 +35,9 @@ namespace FortyTwoAudiobooks.Core.ViewModels.Storage
             }
         }
 
-        private ObservableCollection<MediaItem> playlists;
+        private ObservableCollection<MediaItemViewModel> playlists;
 
-        public ObservableCollection<MediaItem> Playlists
+        public ObservableCollection<MediaItemViewModel> Playlists
         {
             get { return playlists; }
             set
@@ -43,9 +46,9 @@ namespace FortyTwoAudiobooks.Core.ViewModels.Storage
             }
         }
 
-        private ObservableCollection<MediaItem> artists;
+        private ObservableCollection<MediaItemViewModel> artists;
 
-        public ObservableCollection<MediaItem> Artists
+        public ObservableCollection<MediaItemViewModel> Artists
         {
             get { return artists; }
             set
@@ -65,28 +68,75 @@ namespace FortyTwoAudiobooks.Core.ViewModels.Storage
             }
         }
 
+        public RelayCommand AddItemsCommand
+        {
+            get
+            {
+                return new RelayCommand(() =>
+                {
+                    var selected = Tracks.Where(t => t.IsSelected).ToList();
+                });
+            }
+        }
+
         public MediaStorageViewModel(LocalStorageConnector storageConnector)
         {
             this.storageConnector = storageConnector;
-            tracks = new ObservableCollection<MediaItem>();
-            albums = new ObservableCollection<MediaItem>();
-            playlists = new ObservableCollection<MediaItem>();
-            artists = new ObservableCollection<MediaItem>();
+            tracks = new ObservableCollection<MediaItemViewModel>();
+            albums = new ObservableCollection<MediaItemViewModel>();
+            playlists = new ObservableCollection<MediaItemViewModel>();
+            artists = new ObservableCollection<MediaItemViewModel>();
         }
 
-        public async Task LoadAsync()
+        public async Task LoadAlnums()
         {
-            var songsTask = storageConnector.GetSongs();
-            var artistsTask = storageConnector.GetArtists();
-            var albumsTasks = storageConnector.GetAlbums();
-            var playlistsTasks = storageConnector.GetPlaylists();
+            IsLoaded = false;
 
-            Tracks = await songsTask;
-            Artists = await artistsTask;
-            Albums = await albumsTasks;
-            Playlists = await playlistsTasks;
+            var albumsTasks = storageConnector.GetAlbums();
+            Albums = ToViewModelCollection(await albumsTasks);
 
             IsLoaded = true;
+        }
+
+        public async Task LoadArtists()
+        {
+            IsLoaded = false;
+
+            var artistsTask = storageConnector.GetArtists();
+            Artists = ToViewModelCollection(await artistsTask);
+
+            IsLoaded = true;
+        }
+
+        public async Task LoadPlaylists()
+        {
+            IsLoaded = false;
+
+            var playlistsTasks = storageConnector.GetPlaylists();
+            Playlists = ToViewModelCollection(await playlistsTasks);
+
+            IsLoaded = true;
+        }
+
+        public async Task LoadSongs()
+        {
+            IsLoaded = false;
+
+            var songsTask = storageConnector.GetSongs();
+            Tracks = ToViewModelCollection(await songsTask);
+
+            IsLoaded = true;
+        }
+
+        private ObservableCollection<MediaItemViewModel> ToViewModelCollection(IEnumerable<MediaItem> items)
+        {
+            var result = items.Select(i => new MediaItemViewModel
+            {
+                Name = i.Name,
+                Artist = i.Artist
+            });
+
+            return new ObservableCollection<MediaItemViewModel>(result);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace FortyTwoAudiobooks.Core.Config
             // Services
             SimpleIoc.Default.Register<IBookService, BookService>();
             SimpleIoc.Default.Register<ISettingsService, SettingsService>();
-            SimpleIoc.Default.Register<AccountService>();
+            SimpleIoc.Default.Register<StorageAccountService>();
 
             // Connectors
             SimpleIoc.Default.Register<LocalStorageConnector>();

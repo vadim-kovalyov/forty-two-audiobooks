@@ -13,38 +13,38 @@ namespace FortyTwoAudiobooks.Core.Config
             var repository = ServiceLocator.Current.GetInstance<IBookRepository>();
 
             var books = new ObservableCollection<Book>();
-            books.Add(new Book() { AccountName = "runtime one", Title = "Maecenas praesent accumsan bibendum" });
+            books.Add(new Book() { StorageAccountName = "runtime one", Title = "Maecenas praesent accumsan bibendum" });
             books.Add(new Book()
             {
-                AccountName = "runtime two",
+                StorageAccountName = "runtime two",
                 Title = "Dictumst eleifend facilisi faucibus",
                 LastPlayed = DateTime.Now
             });
             books.Add(new Book()
             {
-                AccountName = "another runtime",
+                StorageAccountName = "another runtime",
                 Title = "Eleifend facilisi faucibus",
                 LastPlayed = DateTime.Now.AddDays(-1)
             });
-            books.Add(new Book() { AccountName = "runtime three", Title = "Habitant inceptos interdum lobortis" });
-            books.Add(new Book() { AccountName = "runtime four", Title = "Nascetur pharetra placerat pulvinar" });
-            books.Add(new Book() { AccountName = "runtime five", Title = "Maecenas praesent accumsan bibendum" });
-            books.Add(new Book() { AccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
-            //books.Add(new Book() { AccountName = "runtime aloot", Title = "Dictumst eleifend facilisi faucibus" });
+            books.Add(new Book() { StorageAccountName = "runtime three", Title = "Habitant inceptos interdum lobortis" });
+            books.Add(new Book() { StorageAccountName = "runtime four", Title = "Nascetur pharetra placerat pulvinar" });
+            books.Add(new Book() { StorageAccountName = "runtime five", Title = "Maecenas praesent accumsan bibendum" });
+            books.Add(new Book() { StorageAccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime seven", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime six", Title = "Dictumst eleifend facilisi faucibus" });
+            //books.Add(new Book() { StorageAccountName = "runtime aloot", Title = "Dictumst eleifend facilisi faucibus" });
 
             repository.SaveBooksAsync(books).Wait();
         }

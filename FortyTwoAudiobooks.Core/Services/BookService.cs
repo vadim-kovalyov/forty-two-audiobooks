@@ -8,6 +8,9 @@ using FortyTwoAudiobooks.Model;
 
 namespace FortyTwoAudiobooks.Core.Services
 {
+    /// <summary>
+    /// Represents a core service that responsible for main operations and "business logic" with books.
+    /// </summary>
     public class BookService : IBookService
     {
         private readonly IBookRepository bookRepository;
@@ -20,7 +23,6 @@ namespace FortyTwoAudiobooks.Core.Services
         {
             this.bookRepository = bookRepository;
             this.settings = settings;
-
         }
 
         public async Task<ObservableCollection<Book>> GetRecentBooksAsync()

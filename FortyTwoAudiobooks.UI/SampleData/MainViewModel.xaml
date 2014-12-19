@@ -5,17 +5,17 @@
     xmlns:viewModels="clr-namespace:FortyTwoAudiobooks.Core.ViewModels;assembly=FortyTwoAudiobooks.Core">
 
     <viewModels:MainViewModel.Recent>
-        <core:Book Source="design one" Title="1Taecas praesent accumsan bibendum" />
-        <core:Book Source="design two" Title="Dictumst eleifend facilisi faucibus" />
+        <core:Book StorageAccountName="design one" Title="1Taecas praesent accumsan bibendum" />
+        <core:Book StorageAccountName="design two" Title="Dictumst eleifend facilisi faucibus" />
     </viewModels:MainViewModel.Recent>
 
     <viewModels:MainViewModel.Collection>
-        <core:Book Source="design one" Title="Maecenas praesent accumsan bibendum" />
-        <core:Book Source="design two" Title="Dictumst eleifend facilisi faucibus" />
-        <core:Book Source="design three" Title="Habitant inceptos interdum lobortis" />
-        <core:Book Source="design four" Title="Nascetur pharetra placerat pulvinar" />
-        <core:Book Source="design five" Title="Sagittis senectus sociosqu suscipit" />
-        <core:Book Source="design six" Title="Torquent ultrices vehicula volutpat" />
+        <core:Book StorageAccountName="design one" Title="Maecenas praesent accumsan bibendum" />
+        <core:Book StorageAccountName="design two" Title="Dictumst eleifend facilisi faucibus" />
+        <core:Book StorageAccountName="design three" Title="Habitant inceptos interdum lobortis" />
+        <core:Book StorageAccountName="design four" Title="Nascetur pharetra placerat pulvinar" />
+        <core:Book StorageAccountName="design five" Title="Sagittis senectus sociosqu suscipit" />
+        <core:Book StorageAccountName="design six" Title="Torquent ultrices vehicula volutpat" />
     </viewModels:MainViewModel.Collection>
 
 </viewModels:MainViewModel>

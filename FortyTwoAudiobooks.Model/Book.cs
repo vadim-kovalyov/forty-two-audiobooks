@@ -11,9 +11,9 @@ namespace FortyTwoAudiobooks.Model
 
         public String Description { get; set; }
 
-        public Guid? AccountId { get; set; }
+        public Guid? StorageAccountId { get; set; }
 
-        public String AccountName { get; set; }
+        public String StorageAccountName { get; set; }
 
         public DateTime? LastPlayed { get; set; }
 

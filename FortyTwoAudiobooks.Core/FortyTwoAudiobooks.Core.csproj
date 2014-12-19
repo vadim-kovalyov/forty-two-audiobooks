@@ -97,10 +97,11 @@
     <Compile Include="Services\IBookService.cs" />
     <Compile Include="Services\ISettingsService.cs" />
     <Compile Include="Services\SettingsService.cs" />
-    <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\StorageAccountService.cs" />
     <Compile Include="ViewModels\AddBookViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MediaItemViewModel.cs" />
     <Compile Include="ViewModels\Storage\MediaStorageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -22,7 +22,8 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox Grid.Column="0" VerticalAlignment="Center"/>
+                <CheckBox Grid.Column="0" VerticalAlignment="Center"
+                          IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
                 <StackPanel  Grid.Column="1">
                     <TextBlock Text="{Binding Name}" TextWrapping="Wrap" 
                                Style="{StaticResource PhoneTextExtraLargeStyle}" />
@@ -37,27 +38,27 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <ProgressBar Visibility="{Binding IsLoaded, Converter={StaticResource InvertVisibilityConverter}}" 
                      Margin="0,0,0,0" IsIndeterminate="True" Height="Auto" VerticalAlignment="Top"/>
-        <phone:Pivot Title="MEDIA LIBRARY" >
-            <phone:PivotItem Header="tracks">
+        <phone:Pivot Title="MEDIA LIBRARY" LoadingPivotItem="Pivot_OnLoadingPivotItem" >
+            <phone:PivotItem Header="tracks" Name="Tracks">
                 <phone:LongListSelector 
                     Margin="0,0,-12,0" ItemsSource="{Binding Tracks}"
                     ItemTemplate="{StaticResource ItemViewTemplate}" 
                     Visibility="{Binding IsCollectionEmpty, Converter={StaticResource InvertVisibilityConverter}}" />
             </phone:PivotItem>
 
-            <phone:PivotItem Header="albums">
+            <phone:PivotItem Header="albums" Name="Albums">
                 <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Albums}"
                     ItemTemplate="{StaticResource ItemViewTemplate}" 
                     Visibility="{Binding IsCollectionEmpty, Converter={StaticResource InvertVisibilityConverter}}" />
             </phone:PivotItem>
 
-            <phone:PivotItem Header="playlists">
+            <phone:PivotItem Header="playlists" Name="Playlists">
                 <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Playlists}"
                     ItemTemplate="{StaticResource ItemViewTemplate}" 
                     Visibility="{Binding IsCollectionEmpty, Converter={StaticResource InvertVisibilityConverter}}" />
             </phone:PivotItem>
 
-            <phone:PivotItem Header="artists">
+            <phone:PivotItem Header="artists" Name="Artists">
                 <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Artists}"
                     ItemTemplate="{StaticResource ItemViewTemplate}" 
                     Visibility="{Binding IsCollectionEmpty, Converter={StaticResource InvertVisibilityConverter}}" />
@@ -66,8 +67,8 @@
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="False" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/Ok.png" Text="add" />
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton IconUri="/Assets/Icons/Ok.png" Text="add" Click="Add_OnClick" />
             <shell:ApplicationBarIconButton IconUri="/Assets/Icons/Cancel.png" Text="cancel" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

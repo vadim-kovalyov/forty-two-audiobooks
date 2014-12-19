@@ -22,15 +22,6 @@ namespace FortyTwoAudiobooks.UI.Views
             {
                 await viewModel.LoadAsync();
             }
-
-            //MediaLibrary library = new MediaLibrary();
-            //var songs = library.Tracks.ToList();
-
-
-            //String name = KnownFolders.MusicLibrary.DisplayName;
-            //IReadOnlyList<StorageFolder> result = await Windows.Storage.KnownFolders.MusicLibrary.GetFoldersAsync();
-            //var list = result.ToList();
-
         }
 
         private void Accounts_OnSelectionChanged(Object sender, SelectionChangedEventArgs e)

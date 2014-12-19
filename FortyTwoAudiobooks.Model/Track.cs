@@ -10,7 +10,7 @@ namespace FortyTwoAudiobooks.Model
 
         public TimeSpan Length { get; set; }
 
-        public Guid? AccountId { get; set; }
+        public Guid? StorageAccountId { get; set; }
 
         public string Uri { get; set; }
     }
